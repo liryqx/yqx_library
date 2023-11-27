@@ -1,0 +1,5407 @@
+basePath: /fcs-gw/api
+definitions:
+  bench.AgvPo:
+    properties:
+      AgvTypePo:
+        $ref: '#/definitions/bench.AgvTypePo'
+      BuyingTime:
+        type: string
+      Code:
+        type: string
+      CreatedAt:
+        type: string
+      Models:
+        type: string
+      Name:
+        type: string
+      NextCleanIntervalTime:
+        type: string
+      NextMaintenanceIntervalTime:
+        type: string
+      TypeCode:
+        type: string
+      UpdateAt:
+        type: string
+    type: object
+  bench.AgvTypePo:
+    properties:
+      CleanIntervalTime:
+        type: integer
+      Code:
+        type: string
+      CreatedAt:
+        type: string
+      MaintainIntervalMileage:
+        type: integer
+      MaintenanceIntervalTime:
+        type: integer
+      Name:
+        type: string
+      ProcessBufferList:
+        items:
+          $ref: '#/definitions/bench.ProcessBufferPo'
+        type: array
+      TimeUnit:
+        type: string
+      UpdateAt:
+        type: string
+    type: object
+  bench.AreaPo:
+    properties:
+      Code:
+        type: string
+      CreatedAt:
+        type: string
+      Name:
+        type: string
+      TypeCode:
+        type: string
+      UpdateAt:
+        type: string
+    type: object
+  bench.EquipmentPo:
+    properties:
+      AreaCode:
+        type: string
+      CanCrossArea:
+        type: boolean
+      Code:
+        type: string
+      CreatedAt:
+        type: string
+      EquipmentType:
+        $ref: '#/definitions/bench.EquipmentTypePo'
+      Name:
+        type: string
+      ProcessCode:
+        type: string
+      ProcessName:
+        type: string
+      ProduceMode:
+        type: integer
+      Status:
+        type: integer
+      ToolType:
+        type: integer
+      TypeCode:
+        type: string
+      UpdateAt:
+        type: string
+    type: object
+  bench.EquipmentTypePo:
+    properties:
+      Code:
+        type: string
+      CreatedAt:
+        type: string
+      LastStage:
+        type: string
+      Name:
+        type: string
+      ParentCode:
+        type: string
+      ProcessBufferList:
+        items:
+          $ref: '#/definitions/bench.ProcessBufferPo'
+        type: array
+      UpdateAt:
+        type: string
+    type: object
+  bench.GoodsShelfTypePo:
+    properties:
+      Code:
+        type: string
+      CreatedAt:
+        type: string
+      LastStage:
+        type: string
+      MaintenanceInterval:
+        type: integer
+      Name:
+        type: string
+      ParentCode:
+        type: string
+      ProcessBufferList:
+        items:
+          $ref: '#/definitions/bench.ProcessBufferPo'
+        type: array
+      UpdateAt:
+        type: string
+      dateUnit:
+        type: string
+    type: object
+  bench.ProcessBufferPo:
+    properties:
+      AreaCode:
+        $ref: '#/definitions/bench.AreaPo'
+      BufferStatus:
+        type: integer
+      Code:
+        type: string
+      CreatedAt:
+        type: string
+      Name:
+        type: string
+      ObjectCode:
+        type: string
+      ObjectName:
+        type: string
+      ProcessBufferType:
+        type: integer
+      Seat:
+        type: string
+      UpdateAt:
+        type: string
+    type: object
+  bench_web.AddAgvReq:
+    properties:
+      buyingTime:
+        description: 购买时间
+        type: string
+      code:
+        description: 编码
+        type: string
+      models:
+        description: 型号
+        type: string
+      name:
+        description: 名称
+        type: string
+      typeCode:
+        description: 分类编码
+        type: string
+    type: object
+  bench_web.AddAgvRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      agvCode:
+        description: 编码
+        type: string
+    type: object
+  bench_web.AddAgvTypeReq:
+    properties:
+      bufferAreaList:
+        description: agv缓冲区列表
+        items:
+          type: string
+        type: array
+      code:
+        description: 分类编码
+        type: string
+      maintainIntervalMileage:
+        description: 保养间隔里程
+        type: integer
+      name:
+        description: 分类名称
+        type: string
+    type: object
+  bench_web.AddAgvTypeRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      agvTypeCode:
+        description: 分类编码
+        type: string
+    type: object
+  bench_web.AddAreaReq:
+    properties:
+      code:
+        description: 编码
+        type: string
+      name:
+        description: 名称
+        type: string
+    type: object
+  bench_web.AddAreaRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      areaCode:
+        description: 编码
+        type: string
+    type: object
+  bench_web.AddAreaTypeReq:
+    properties:
+      code:
+        description: 分类编码
+        type: string
+      name:
+        description: 分类名称
+        type: string
+    type: object
+  bench_web.AddAreaTypeRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      areaTypeCode:
+        description: 分类编码
+        type: string
+    type: object
+  bench_web.AddCouplingMechanismReq:
+    properties:
+      code:
+        description: 机构编码
+        type: string
+      name:
+        description: 机构名称
+        type: string
+    type: object
+  bench_web.AddCouplingMechanismRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      couplingMechanismCode:
+        description: 机构编码
+        type: string
+    type: object
+  bench_web.AddEquipmentReq:
+    properties:
+      areaCode:
+        description: 片区编码
+        type: string
+      canCrossArea:
+        description: 是否允许跨片区调料
+        type: boolean
+      code:
+        description: 设备编码
+        type: string
+      name:
+        description: 设备名称
+        type: string
+      processCode:
+        description: 工序编码
+        type: string
+      produceMode:
+        description: '''生产模式:1手动 2自动'','
+        type: integer
+      status:
+        description: 设备状态 1正常 2禁用 3故障'
+        type: integer
+      toolType:
+        description: '''设备所需工具信息:1料盒 2干花篮 3湿花篮'''
+        type: integer
+      typeCode:
+        description: 设备分类编码
+        type: string
+    type: object
+  bench_web.AddEquipmentRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      equipmentCode:
+        description: 设备编码
+        type: string
+    type: object
+  bench_web.AddEquipmentSiteReq:
+    properties:
+      code:
+        description: 站点编码
+        type: string
+      couplingCode:
+        description: 站点映射在地图上的坐标
+        type: string
+      equipmentCode:
+        description: 设备编码
+        type: string
+      name:
+        description: 站点名称
+        type: string
+      overTime:
+        description: 单位:秒(s),当前设备生产的出料可在空气暴露的时长
+        type: integer
+      processCode:
+        description: 工序编码
+        type: string
+      productMode:
+        description: 站点(设备)生产方式 1手动 2自动
+        type: integer
+      seat:
+        description: 站点映射在地图上的坐标
+        type: string
+      status:
+        description: '''站点状态 1正常 2禁用 3故障'''
+        type: integer
+      toolType:
+        description: 站点所属工具类型
+        type: integer
+      type:
+        description: 站点类型
+        type: integer
+    type: object
+  bench_web.AddEquipmentSiteRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      equipmentSiteCode:
+        description: 站点编码
+        type: string
+    type: object
+  bench_web.AddEquipmentTypeReq:
+    properties:
+      bufferAreaList:
+        description: 缓冲区列表
+        items:
+          type: string
+        type: array
+      code:
+        description: 设备分类编码
+        type: string
+      name:
+        description: 设备分类名称
+        type: string
+    type: object
+  bench_web.AddEquipmentTypeRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      equipmentTypeCode:
+        description: 设备分类编码
+        type: string
+    type: object
+  bench_web.AddFlowerBasketReq:
+    properties:
+      buyingTime:
+        description: 购买时间
+        type: string
+      code:
+        description: 花篮编码
+        type: string
+      name:
+        description: 花篮名称
+        type: string
+      nextCleanIntervalTime:
+        description: 下次清洗时间
+        type: string
+      rfid:
+        description: RFID
+        type: string
+      supplier:
+        description: 供应商
+        type: string
+      typeCode:
+        description: 分类编码
+        type: string
+    type: object
+  bench_web.AddFlowerBasketRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      flowerBasketCode:
+        description: 花篮编码
+        type: string
+    type: object
+  bench_web.AddFlowerBasketTypeReq:
+    properties:
+      cleanIntervalTime:
+        description: 清洗间隔时间
+        type: integer
+      code:
+        description: 花篮分类编码
+        type: string
+      name:
+        description: 花篮分类名称
+        type: string
+      parentCode:
+        description: 父分类编码
+        type: string
+      timeUnit:
+        description: 时间单位
+        type: string
+    type: object
+  bench_web.AddFlowerBasketTypeRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      flowerBasketTypeCode:
+        description: 设备分类编码
+        type: string
+    type: object
+  bench_web.AddGoodsShelfTypeReq:
+    properties:
+      bufferAreaList:
+        description: 缓冲区列表
+        items:
+          type: string
+        type: array
+      code:
+        description: 货架分类编码
+        type: string
+      maintenanceInterval:
+        description: 保养间隔
+        type: integer
+      name:
+        description: 货架分类名称
+        type: string
+    type: object
+  bench_web.AddGoodsShelfTypeRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      goodsShelfTypeCode:
+        description: 货架分类编码
+        type: string
+    type: object
+  bench_web.AddProcessBufferReq:
+    properties:
+      areaCode:
+        description: 片区编码
+        type: string
+      bufferStatus:
+        description: 缓存状态
+        type: integer
+      code:
+        description: 缓存编码
+        type: string
+      name:
+        description: 缓存名称
+        type: string
+      processBufferType:
+        description: 缓存类别
+        type: integer
+      seat:
+        description: 坐标
+        type: string
+    type: object
+  bench_web.AddProcessBufferRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      processBufferCode:
+        description: 缓存编码
+        type: string
+    type: object
+  bench_web.AddProcessReq:
+    properties:
+      Code:
+        description: 工序编码
+        type: string
+      Name:
+        description: 工序名称
+        type: string
+      ParentCode:
+        description: 父工序编码
+        type: string
+    type: object
+  bench_web.AddProcessRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      processCode:
+        description: 工序编码
+        type: string
+    type: object
+  bench_web.AddProductLineDetailReq:
+    properties:
+      equipmentCode:
+        description: 设备编码
+        type: string
+      processCode:
+        description: 工序编码
+        type: string
+      processSortNum:
+        description: 工序排序号
+        type: integer
+      productLineCode:
+        description: 工艺路线编码
+        type: string
+    type: object
+  bench_web.AddProductLineDetailRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.AddProductLineReq:
+    properties:
+      code:
+        description: 编码
+        type: string
+      name:
+        description: 名称
+        type: string
+      status:
+        description: 状态:1启用 2禁用
+        type: integer
+    type: object
+  bench_web.AddProductLineRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      productLineCode:
+        description: 编码
+        type: string
+    type: object
+  bench_web.AddSectionDetailReq:
+    properties:
+      processCode:
+        description: 工序编码
+        type: string
+      processSortNum:
+        description: 工序排序号
+        type: integer
+      sectionCode:
+        description: 工段循环编码
+        type: string
+    type: object
+  bench_web.AddSectionDetailRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.AddSectionReq:
+    properties:
+      code:
+        description: 编码
+        type: string
+      desc:
+        description: 描述
+        type: string
+      name:
+        description: 名称
+        type: string
+    type: object
+  bench_web.AddSectionRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      sectionCode:
+        description: 编码
+        type: string
+    type: object
+  bench_web.AddSectionShelvesReq:
+    properties:
+      code:
+        description: 货架编码
+        type: string
+      name:
+        description: 货架名称
+        type: string
+      status:
+        description: '''货架状态:1正常 2禁用 3故障'''
+        type: integer
+      storageCreateTime:
+        description: 货架料创建时间
+        type: string
+      storageProduceStatus:
+        description: 货架生产状态状态：1空 2满
+        type: integer
+      storageSiteCode:
+        description: 货架当前所在站点
+        type: string
+      storageToolSiteCode:
+        description: 货架来源站点
+        type: string
+      storageTypeCode:
+        description: 货架类型编码
+        type: string
+      toolType:
+        description: '''货架使用的工具类型:1料盒 2干花篮 3湿花篮 4空货架'''
+        type: integer
+    type: object
+  bench_web.AddSectionShelvesRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      sectionShelvesCode:
+        description: 货架编码
+        type: string
+    type: object
+  bench_web.AddSuppliesReq:
+    properties:
+      code:
+        description: 物料编码
+        type: string
+      name:
+        description: 物料名称
+        type: string
+      spec:
+        description: 规格型号
+        type: string
+      typeCode:
+        description: 物料分类编码
+        type: string
+      unit:
+        description: 主计划单位
+        type: string
+    type: object
+  bench_web.AddSuppliesRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      suppliesCode:
+        description: 物料编码
+        type: string
+    type: object
+  bench_web.AddSuppliesTypeReq:
+    properties:
+      code:
+        description: 物料分类编码
+        type: string
+      name:
+        description: 物料分类名称
+        type: string
+      parentCode:
+        description: 父分类编码
+        type: string
+    type: object
+  bench_web.AddSuppliesTypeRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      suppliesTypeCode:
+        description: 物料分类编码
+        type: string
+    type: object
+  bench_web.BindEquipmentSiteReq:
+    properties:
+      storageCode:
+        description: 基础数据编码
+        type: string
+      storageCreateTime:
+        description: 货架料创建时间 货架生产状态为满且来源站点出的是满料时传，不传默认为当前时间
+        type: string
+      storageProduceStatus:
+        description: 货架生产状态：1空 2满
+        type: integer
+      storageSiteCode:
+        description: 货架当前所在站点
+        type: string
+      storageToolSiteCode:
+        description: 货架来源站点，货架生产状态为满时必输
+        type: string
+    type: object
+  bench_web.BindEquipmentSiteRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.CancelTaskReq:
+    properties:
+      taskId:
+        description: 人工调度任务ID
+        type: integer
+    type: object
+  bench_web.CancelTaskRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.DelAgvReq:
+    properties:
+      code:
+        description: 编码
+        type: string
+    type: object
+  bench_web.DelAgvRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.DelAgvTypeReq:
+    properties:
+      code:
+        description: 分类编码
+        type: string
+    type: object
+  bench_web.DelAgvTypeRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.DelAreaReq:
+    properties:
+      code:
+        description: 编码
+        type: string
+    type: object
+  bench_web.DelAreaRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.DelAreaTypeReq:
+    properties:
+      code:
+        description: 编码
+        type: string
+    type: object
+  bench_web.DelAreaTypeRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.DelCouplingMechanismReq:
+    properties:
+      code:
+        description: 机构编码
+        type: string
+    type: object
+  bench_web.DelCouplingMechanismRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.DelEquipmentReq:
+    properties:
+      code:
+        description: 设备编码
+        type: string
+    type: object
+  bench_web.DelEquipmentRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.DelEquipmentSiteReq:
+    properties:
+      code:
+        description: 站点编码
+        type: string
+    type: object
+  bench_web.DelEquipmentSiteRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.DelEquipmentTypeReq:
+    properties:
+      code:
+        description: 设备分类编码
+        type: string
+    type: object
+  bench_web.DelEquipmentTypeRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.DelFlowerBasketReq:
+    properties:
+      code:
+        description: 花篮分类编码
+        type: string
+    type: object
+  bench_web.DelFlowerBasketRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.DelFlowerBasketTypeReq:
+    properties:
+      code:
+        description: 分类编码
+        type: string
+    type: object
+  bench_web.DelFlowerBasketTypeRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.DelGoodsShelfTypeReq:
+    properties:
+      code:
+        description: 货架分类编码
+        type: string
+    type: object
+  bench_web.DelGoodsShelfTypeRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.DelProcessBufferReq:
+    properties:
+      code:
+        description: 缓存编码
+        type: string
+    type: object
+  bench_web.DelProcessBufferRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.DelProcessReq:
+    properties:
+      code:
+        description: 工序编码
+        type: string
+    type: object
+  bench_web.DelProcessRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.DelProductLineDetailReq:
+    properties:
+      id:
+        description: 详情id
+        type: integer
+    type: object
+  bench_web.DelProductLineDetailRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.DelProductLineReq:
+    properties:
+      code:
+        description: 编码
+        type: string
+    type: object
+  bench_web.DelProductLineRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.DelSectionDetailReq:
+    properties:
+      id:
+        description: 详情id
+        type: integer
+    type: object
+  bench_web.DelSectionDetailRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.DelSectionReq:
+    properties:
+      code:
+        description: 编码
+        type: string
+    type: object
+  bench_web.DelSectionRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.DelSectionShelvesReq:
+    properties:
+      code:
+        description: 货架编码
+        type: string
+    type: object
+  bench_web.DelSectionShelvesRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.DelSuppliesReq:
+    properties:
+      code:
+        description: 物料编码
+        type: string
+    type: object
+  bench_web.DelSuppliesRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.DelSuppliesTypeReq:
+    properties:
+      code:
+        description: 物料分类编码
+        type: string
+    type: object
+  bench_web.DelSuppliesTypeRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.DispatchTaskListReq:
+    properties:
+      queryParams:
+        $ref: '#/definitions/common.QueryParams'
+        description: 查询参数
+    type: object
+  bench_web.DispatchTaskListRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      dispatchTaskList:
+        items:
+          $ref: '#/definitions/dispatch.DispatchTask'
+        type: array
+    type: object
+  bench_web.EndInspectionReq:
+    properties:
+      taskId:
+        description: 人工调度任务ID
+        type: integer
+    type: object
+  bench_web.EndInspectionRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.GetAgvListRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      data:
+        properties:
+          agvList:
+            items:
+              $ref: '#/definitions/bench.AgvPo'
+            type: array
+        type: object
+      totalCount:
+        description: 总数
+        type: integer
+    type: object
+  bench_web.GetAgvTypeListRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      data:
+        properties:
+          agvTypeList:
+            items:
+              $ref: '#/definitions/bench.AgvTypePo'
+            type: array
+        type: object
+      totalCount:
+        description: 总数
+        type: integer
+    type: object
+  bench_web.GetAreaListRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      data:
+        properties:
+          areaList:
+            items:
+              $ref: '#/definitions/bench.AreaPo'
+            type: array
+        type: object
+      totalCount:
+        description: 总数
+        type: integer
+    type: object
+  bench_web.GetAreaTypeListRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      totalCount:
+        description: 总数
+        type: integer
+    type: object
+  bench_web.GetCouplingMechanismListRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      totalCount:
+        description: 总数
+        type: integer
+    type: object
+  bench_web.GetEquipmentListRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      data:
+        properties:
+          equipmentList:
+            items:
+              $ref: '#/definitions/bench.EquipmentPo'
+            type: array
+        type: object
+      totalCount:
+        description: 总数
+        type: integer
+    type: object
+  bench_web.GetEquipmentOneRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      data:
+        properties:
+          equipment:
+            $ref: '#/definitions/bench.EquipmentPo'
+        type: object
+    type: object
+  bench_web.GetEquipmentSiteRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.GetEquipmentTypeListRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      data:
+        properties:
+          equipmentTypeList:
+            items:
+              $ref: '#/definitions/bench.EquipmentTypePo'
+            type: array
+        type: object
+      totalCount:
+        description: 总数
+        type: integer
+    type: object
+  bench_web.GetEquipmentTypeTreeListRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.GetFlowerBasketListRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      totalCount:
+        description: 总数
+        type: integer
+    type: object
+  bench_web.GetFlowerBasketTypeListRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      totalCount:
+        description: 总数
+        type: integer
+    type: object
+  bench_web.GetFlowerBasketTypeTreeListRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.GetGoodsShelfTypeListRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      data:
+        properties:
+          goodsShelfTypeList:
+            items:
+              $ref: '#/definitions/bench.GoodsShelfTypePo'
+            type: array
+        type: object
+      totalCount:
+        description: 总数
+        type: integer
+    type: object
+  bench_web.GetGoodsShelfTypeTreeListRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.GetOneAgvRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      data:
+        properties:
+          agv:
+            $ref: '#/definitions/bench.AgvPo'
+        type: object
+    type: object
+  bench_web.GetOneAgvTypeRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      data:
+        properties:
+          agvType:
+            $ref: '#/definitions/bench.AgvTypePo'
+        type: object
+    type: object
+  bench_web.GetOneAreaRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      data:
+        properties:
+          areaInfo:
+            $ref: '#/definitions/bench.AreaPo'
+        type: object
+    type: object
+  bench_web.GetOneAreaTypeRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.GetOneCouplingMechanismRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.GetOneEquipmentTypeRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      data:
+        properties:
+          equipmentType:
+            $ref: '#/definitions/bench.EquipmentTypePo'
+        type: object
+    type: object
+  bench_web.GetOneFlowerBasketRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.GetOneFlowerBasketTypeRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.GetOneGoodsShelfTypeRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      data:
+        properties:
+          goodsShelfType:
+            $ref: '#/definitions/bench.GoodsShelfTypePo'
+        type: object
+    type: object
+  bench_web.GetOneProcessRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.GetOneSuppliesTypeRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.GetProcessBufferListRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      data:
+        properties:
+          processBufferList:
+            items:
+              $ref: '#/definitions/bench.ProcessBufferPo'
+            type: array
+        type: object
+      totalCount:
+        description: 总数
+        type: integer
+    type: object
+  bench_web.GetProcessBufferOneRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      data:
+        properties:
+          processBuffer:
+            $ref: '#/definitions/bench.ProcessBufferPo'
+        type: object
+    type: object
+  bench_web.GetProcessListRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      totalCount:
+        description: 总数
+        type: integer
+    type: object
+  bench_web.GetProductLineDetailListRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.GetProductLineListRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      totalCount:
+        description: 总数
+        type: integer
+    type: object
+  bench_web.GetProductLineOneRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.GetSectionDetailListRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.GetSectionListRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      totalCount:
+        description: 总数
+        type: integer
+    type: object
+  bench_web.GetSectionOneRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.GetSectionShelvesListRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      totalCount:
+        description: 总数
+        type: integer
+    type: object
+  bench_web.GetSectionShelvesOneRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.GetSuppliesListRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      totalCount:
+        description: 总数
+        type: integer
+    type: object
+  bench_web.GetSuppliesOneRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.GetSuppliesTypeListRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      totalCount:
+        description: 总数
+        type: integer
+    type: object
+  bench_web.GetSuppliesTypeTreeListRsp:
+    properties:
+      Code:
+        description: 响应编码  0成功 ，其他失败
+        type: integer
+      Data:
+        description: 响应数据
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.InspectionListReq:
+    properties:
+      taskId:
+        description: 人工调度任务ID
+        type: integer
+    type: object
+  bench_web.InspectionListRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.MaintainCompleteReq:
+    properties:
+      taskId:
+        description: 人工调度任务ID
+        type: integer
+    type: object
+  bench_web.MaintainCompleteRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.MaintainConfirmReq:
+    properties:
+      taskId:
+        description: 人工调度任务ID
+        type: integer
+    type: object
+  bench_web.MaintainConfirmRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.MaintainListReq:
+    properties:
+      taskId:
+        description: 人工调度任务ID
+        type: integer
+    type: object
+  bench_web.MaintainListRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.ManualCallReq:
+    properties:
+      operationType:
+        description: 操作类型：1人工叫料 2人工送料
+        type: integer
+      siteCode:
+        description: 站点编码
+        type: string
+      storageStatus:
+        description: 货架状态：1空 2满
+        type: integer
+      storageToolStatus:
+        description: 货架料状态：1满料 2无料
+        type: integer
+    type: object
+  bench_web.ManualCallRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      taskId:
+        description: 人工调度任务ID
+        type: integer
+    type: object
+  bench_web.OrderDetailReq:
+    properties:
+      sendTime:
+        type: integer
+    type: object
+  bench_web.OrderDetailRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+      completedPercent:
+        type: integer
+      orderStatus:
+        type: integer
+    type: object
+  bench_web.PublishOrderReq:
+    properties:
+      cellNumber:
+        type: integer
+      orderStatus:
+        type: integer
+    type: object
+  bench_web.PublishOrderRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.StartInspectionReq:
+    properties:
+      taskId:
+        description: 人工调度任务ID
+        type: integer
+    type: object
+  bench_web.StartInspectionRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.UnBindEquipmentSiteReq:
+    properties:
+      siteCode:
+        description: 货架所在站点编码
+        type: string
+      storageCode:
+        description: 基础数据编码
+        type: string
+    type: object
+  bench_web.UnBindEquipmentSiteRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.UpdateAgvReq:
+    properties:
+      buyingTime:
+        description: 购买时间
+        type: string
+      code:
+        description: 编码
+        type: string
+      models:
+        description: 型号
+        type: string
+      name:
+        description: 名称
+        type: string
+      typeCode:
+        description: 分类编码
+        type: string
+    type: object
+  bench_web.UpdateAgvRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.UpdateAgvTypeReq:
+    properties:
+      bufferAreaList:
+        description: AGV缓冲区
+        items:
+          type: string
+        type: array
+      code:
+        description: 分类编码
+        type: string
+      maintainIntervalMileage:
+        description: 保养间隔里程
+        type: integer
+      name:
+        description: 分类名称
+        type: string
+    type: object
+  bench_web.UpdateAgvTypeRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.UpdateAreaReq:
+    properties:
+      code:
+        description: 编码
+        type: string
+      name:
+        description: 名称
+        type: string
+    type: object
+  bench_web.UpdateAreaRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.UpdateAreaTypeReq:
+    properties:
+      code:
+        description: 分类编码
+        type: string
+      name:
+        description: 分类名称
+        type: string
+    type: object
+  bench_web.UpdateAreaTypeRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.UpdateCouplingMechanismReq:
+    properties:
+      code:
+        description: 机构编码
+        type: string
+      name:
+        description: 机构名称
+        type: string
+    type: object
+  bench_web.UpdateCouplingMechanismRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.UpdateEquipmentReq:
+    properties:
+      areaCode:
+        description: 片区编码
+        type: string
+      canCrossArea:
+        description: 是否允许跨片区调料
+        type: boolean
+      code:
+        description: 设备编码
+        type: string
+      name:
+        description: 设备名称
+        type: string
+      processCode:
+        description: 工序编码
+        type: string
+      produceMode:
+        description: '''生产模式:1手动 2自动'','
+        type: integer
+      status:
+        description: 设备状态 1正常 2禁用 3故障'
+        type: integer
+      toolType:
+        description: '''设备所需工具信息:1料盒 2干花篮 3湿花篮'''
+        type: integer
+      typeCode:
+        description: 设备分类编码
+        type: string
+    type: object
+  bench_web.UpdateEquipmentRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.UpdateEquipmentTypeReq:
+    properties:
+      bufferAreaList:
+        description: 缓冲区列表
+        items:
+          type: string
+        type: array
+      code:
+        description: 设备分类编码
+        type: string
+      name:
+        description: 设备分类名称
+        type: string
+    type: object
+  bench_web.UpdateEquipmentTypeRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.UpdateFlowerBasketReq:
+    properties:
+      buyingTime:
+        description: 购买时间
+        type: string
+      code:
+        description: 花篮编码
+        type: string
+      name:
+        description: 花篮名称
+        type: string
+      nextCleanIntervalTime:
+        description: 下次清洗时间
+        type: string
+      rfid:
+        description: RFID
+        type: string
+      supplier:
+        description: 供应商
+        type: string
+    type: object
+  bench_web.UpdateFlowerBasketRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.UpdateFlowerBasketTypeReq:
+    properties:
+      cleanIntervalTime:
+        description: 清洗间隔时间
+        type: integer
+      code:
+        description: 花篮分类编码
+        type: string
+      name:
+        description: 花篮分类名称
+        type: string
+      timeUnit:
+        description: 时间单位
+        type: string
+    type: object
+  bench_web.UpdateFlowerBasketTypeRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.UpdateGoodsShelfTypeReq:
+    properties:
+      bufferAreaList:
+        description: 缓冲区列表
+        items:
+          type: string
+        type: array
+      code:
+        description: 货架分类编码
+        type: string
+      maintenanceInterval:
+        description: 保养间隔
+        type: integer
+      name:
+        description: 货架分类名称
+        type: string
+    type: object
+  bench_web.UpdateGoodsShelfTypeRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.UpdateProcessBufferReq:
+    properties:
+      areaCode:
+        description: 片区编码
+        type: string
+      bufferStatus:
+        description: 缓存状态
+        type: integer
+      code:
+        description: 缓存编码
+        type: string
+      name:
+        description: 缓存名称
+        type: string
+      processBufferType:
+        description: 缓存类别
+        type: integer
+      seat:
+        description: 坐标
+        type: string
+    type: object
+  bench_web.UpdateProcessBufferRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.UpdateProductLineDetailReq:
+    properties:
+      equipmentCode:
+        description: 设备编码
+        type: string
+      id:
+        description: 详情id
+        type: integer
+      processCode:
+        description: 工序编码
+        type: string
+      processSortNum:
+        description: 工序排序号
+        type: integer
+    type: object
+  bench_web.UpdateProductLineDetailRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.UpdateProductLineReq:
+    properties:
+      code:
+        description: 编码
+        type: string
+      name:
+        description: 名称
+        type: string
+      status:
+        description: 状态:1启用 2禁用
+        type: integer
+    type: object
+  bench_web.UpdateProductLineRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.UpdateSectionDetailReq:
+    properties:
+      id:
+        description: 详情id
+        type: integer
+      processCode:
+        description: 工序编码
+        type: string
+      processSortNum:
+        description: 工序排序号
+        type: integer
+    type: object
+  bench_web.UpdateSectionDetailRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.UpdateSectionReq:
+    properties:
+      code:
+        description: 编码
+        type: string
+      desc:
+        description: 描述
+        type: string
+      name:
+        description: 名称
+        type: string
+    type: object
+  bench_web.UpdateSectionRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.UpdateSectionShelvesReq:
+    properties:
+      code:
+        description: 货架编码
+        type: string
+      name:
+        description: 货架名称
+        type: string
+      status:
+        description: '''货架状态:1正常 2禁用 3故障'''
+        type: integer
+      storageCreateTime:
+        description: 货架料创建时间
+        type: string
+      storageProduceStatus:
+        description: 货架生产状态状态：1空 2满
+        type: integer
+      storageSiteCode:
+        description: 货架当前所在站点
+        type: string
+      storageToolSiteCode:
+        description: 货架来源站点
+        type: string
+      toolType:
+        description: '''货架使用的工具类型:1料盒 2干花篮 3湿花篮 4空货架'''
+        type: integer
+    type: object
+  bench_web.UpdateSectionShelvesRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.UpdateSuppliesReq:
+    properties:
+      code:
+        description: 物料编码
+        type: string
+      name:
+        description: 物料名称
+        type: string
+      spec:
+        description: 规格型号
+        type: string
+      typeCode:
+        description: 物料分类编码
+        type: string
+      unit:
+        description: 主计划单位
+        type: string
+    type: object
+  bench_web.UpdateSuppliesRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  bench_web.UpdateSuppliesTypeReq:
+    properties:
+      code:
+        description: 物料分类编码
+        type: string
+      name:
+        description: 物料分类名称
+        type: string
+    type: object
+  bench_web.UpdateSuppliesTypeRsp:
+    properties:
+      Code:
+        description: 响应码 0 成功  ， 其他 失败
+        type: integer
+      Msg:
+        description: 响应描述  成功/错误信息
+        type: string
+      RequestId:
+        description: 请求ID
+        type: string
+    type: object
+  common.Filter:
+    properties:
+      Name:
+        type: string
+      Op:
+        type: string
+      Values:
+        items:
+          type: string
+        type: array
+    type: object
+  common.QueryParams:
+    properties:
+      Filters:
+        items:
+          $ref: '#/definitions/common.Filter'
+        type: array
+      Limit:
+        type: integer
+      Offset:
+        type: integer
+      Sorts:
+        items:
+          $ref: '#/definitions/common.Sort'
+        type: array
+    type: object
+  common.Sort:
+    properties:
+      Name:
+        type: string
+      OrderBy:
+        type: string
+    type: object
+  dispatch.DispatchTask:
+    properties:
+      BeforeTaskId:
+        type: integer
+      EndSiteCode:
+        type: string
+      EndSiteCouplingCode:
+        type: string
+      EndSiteEquipmentCode:
+        type: string
+      EndSiteIsCirculateTail:
+        type: integer
+      EndSiteProcessOvertime:
+        type: integer
+      EndSiteSeat:
+        type: string
+      EndSiteStaticType:
+        type: integer
+      EndSiteType:
+        type: integer
+      StartSiteCode:
+        type: string
+      StartSiteCouplingCode:
+        type: string
+      StartSiteEquipmentCode:
+        type: string
+      StartSiteSeat:
+        type: string
+      StartSiteStaticType:
+        type: integer
+      StartSiteType:
+        type: integer
+      StorageCode:
+        type: string
+      TaskDescribe:
+        type: string
+      TaskEndTime:
+        type: string
+      TaskId:
+        type: integer
+      TaskInteractionType:
+        type: integer
+      TaskStageStartTime:
+        type: string
+      TaskStartTime:
+        type: string
+      TaskStatus:
+        type: integer
+      TaskType:
+        type: integer
+    type: object
+info:
+  contact: {}
+  title: 智慧物流系统
+  version: "430"
+paths:
+  /AddAgv:
+    post:
+      consumes:
+      - application/json
+      description: 添加Agv
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.AddAgvReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.AddAgvRsp'
+      summary: 添加Agv
+      tags:
+      - 5.30/Agv
+  /AddAgvType:
+    post:
+      consumes:
+      - application/json
+      description: 添加Agv分类
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.AddAgvTypeReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.AddAgvTypeRsp'
+      summary: 添加Agv分类
+      tags:
+      - 5.30/Agv分类
+  /AddArea:
+    post:
+      consumes:
+      - application/json
+      description: 添加片区
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.AddAreaReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.AddAreaRsp'
+      summary: 添加片区
+      tags:
+      - 5.30/片区
+  /AddAreaType:
+    post:
+      consumes:
+      - application/json
+      description: 添加片区分类
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.AddAreaTypeReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.AddAreaTypeRsp'
+      summary: 添加片区分类
+      tags:
+      - 5.30/片区分类
+  /AddCouplingMechanism:
+    post:
+      consumes:
+      - application/json
+      description: 添加耦合机构
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.AddCouplingMechanismReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.AddCouplingMechanismRsp'
+      summary: 添加耦合机构
+      tags:
+      - 4.30 - 耦合机构
+  /AddEquipment:
+    post:
+      consumes:
+      - application/json
+      description: 添加设备
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.AddEquipmentReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.AddEquipmentRsp'
+      summary: 添加设备
+      tags:
+      - 4.30 - 设备
+  /AddEquipmentSite:
+    post:
+      consumes:
+      - application/json
+      description: 添加设备站点
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.AddEquipmentSiteReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.AddEquipmentSiteRsp'
+      summary: 添加设备站点
+      tags:
+      - 4.30 - 设备站点
+  /AddEquipmentType:
+    post:
+      consumes:
+      - application/json
+      description: 添加设备分类
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.AddEquipmentTypeReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.AddEquipmentTypeRsp'
+      summary: 添加设备分类
+      tags:
+      - 5.30 - 设备分类
+  /AddFlowerBasket:
+    post:
+      consumes:
+      - application/json
+      description: 添加花篮
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.AddFlowerBasketReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.AddFlowerBasketRsp'
+      summary: 添加花篮
+      tags:
+      - 4.30 - 花篮
+  /AddFlowerBasketType:
+    post:
+      consumes:
+      - application/json
+      description: 添加花篮分类
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.AddFlowerBasketTypeReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.AddFlowerBasketTypeRsp'
+      summary: 添加花篮分类
+      tags:
+      - 4.30 - 花篮分类
+  /AddGoodsShelfType:
+    post:
+      consumes:
+      - application/json
+      description: 添加货架分类
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.AddGoodsShelfTypeReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.AddGoodsShelfTypeRsp'
+      summary: 添加货架分类
+      tags:
+      - 5.30/货架分类
+  /AddProcessBuffer:
+    post:
+      consumes:
+      - application/json
+      description: 添加缓存
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.AddProcessBufferReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.AddProcessBufferRsp'
+      summary: 添加缓存
+      tags:
+      - 4.30 - 缓存
+  /AddProductLine:
+    post:
+      consumes:
+      - application/json
+      description: 添加工艺路线
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.AddProductLineReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.AddProductLineRsp'
+      summary: 添加工艺路线
+      tags:
+      - 4.30 - 工艺路线
+  /AddSupplies:
+    post:
+      consumes:
+      - application/json
+      description: 添加物料
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.AddSuppliesReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.AddSuppliesRsp'
+      summary: 添加物料
+      tags:
+      - 4.30 - 物料
+  /AddSuppliesType:
+    post:
+      consumes:
+      - application/json
+      description: 添加物料分类
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.AddSuppliesTypeReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.AddSuppliesTypeRsp'
+      summary: 添加物料分类
+      tags:
+      - 4.30 - 物料分类
+  /DelAgv:
+    post:
+      consumes:
+      - application/json
+      description: 删除Agv
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.DelAgvReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.DelAgvRsp'
+      summary: 删除Agv
+      tags:
+      - 5.30/Agv
+  /DelAgvType:
+    post:
+      consumes:
+      - application/json
+      description: 删除Agv分类 存在关联的下游Agv时无法删除
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.DelAgvTypeReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.DelAgvTypeRsp'
+      summary: 删除Agv分类
+      tags:
+      - 5.30/Agv分类
+  /DelArea:
+    post:
+      consumes:
+      - application/json
+      description: 删除片区
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.DelAreaReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.DelAreaRsp'
+      summary: 删除片区
+      tags:
+      - 5.30/片区
+  /DelAreaType:
+    post:
+      consumes:
+      - application/json
+      description: 删除片区分类
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.DelAreaTypeReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.DelAreaTypeRsp'
+      summary: 删除片区分类
+      tags:
+      - 5.30/片区分类
+  /DelCouplingMechanism:
+    post:
+      consumes:
+      - application/json
+      description: 删除耦合机构
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.DelCouplingMechanismReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.DelCouplingMechanismRsp'
+      summary: 删除耦合机构
+      tags:
+      - 4.30 - 耦合机构
+  /DelEquipment:
+    post:
+      consumes:
+      - application/json
+      description: 删除设备
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.DelEquipmentReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.DelEquipmentRsp'
+      summary: 删除设备
+      tags:
+      - 4.30 - 设备
+  /DelEquipmentSite:
+    post:
+      consumes:
+      - application/json
+      description: 删除设备站点
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.DelEquipmentSiteReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.DelEquipmentSiteRsp'
+      summary: 删除设备站点
+      tags:
+      - 4.30 - 设备站点
+  /DelEquipmentType:
+    post:
+      consumes:
+      - application/json
+      description: 删除设备分类
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.DelEquipmentTypeReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.DelEquipmentTypeRsp'
+      summary: 删除设备分类
+      tags:
+      - 5.30 - 设备分类
+  /DelFlowerBasket:
+    post:
+      consumes:
+      - application/json
+      description: 删除花篮
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.DelFlowerBasketReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.DelFlowerBasketRsp'
+      summary: 删除花篮
+      tags:
+      - 4.30 - 花篮
+  /DelFlowerBasketType:
+    post:
+      consumes:
+      - application/json
+      description: 删除花篮分类
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.DelFlowerBasketTypeReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.DelFlowerBasketTypeRsp'
+      summary: 删除花篮分类
+      tags:
+      - 4.30 - 花篮分类
+  /DelGoodsShelfType:
+    post:
+      consumes:
+      - application/json
+      description: 删除货架分类
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.DelGoodsShelfTypeReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.DelGoodsShelfTypeRsp'
+      summary: 删除货架分类
+      tags:
+      - 5.30/货架分类
+  /DelProcess:
+    post:
+      consumes:
+      - application/json
+      description: 删除工序
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.DelProcessReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.DelProcessRsp'
+      summary: 删除工序
+      tags:
+      - 4.30 - 工序
+  /DelProcessBuffer:
+    post:
+      consumes:
+      - application/json
+      description: 删除缓存
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.DelProcessBufferReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.DelProcessBufferRsp'
+      summary: 删除缓存
+      tags:
+      - 4.30 - 缓存
+  /DelProductLine:
+    post:
+      consumes:
+      - application/json
+      description: 删除工艺路线
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.DelProductLineReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.DelProductLineRsp'
+      summary: 删除工艺路线
+      tags:
+      - 4.30 - 工艺路线
+  /DelProductLineDetail:
+    post:
+      consumes:
+      - application/json
+      description: 删除工艺路线详情
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.DelProductLineDetailReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.DelProductLineDetailRsp'
+      summary: 删除工艺路线详情
+      tags:
+      - 4.30 - 工艺路线详情
+  /DelSection:
+    post:
+      consumes:
+      - application/json
+      description: 删除工段循环
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.DelSectionReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.DelSectionRsp'
+      summary: 删除工段循环
+      tags:
+      - 4.30 - 工段循环
+  /DelSectionDetail:
+    post:
+      consumes:
+      - application/json
+      description: 删除工段循环详情
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.DelSectionDetailReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.DelSectionDetailRsp'
+      summary: 删除工段循环详情
+      tags:
+      - 4.30 - 工段循环详情
+  /DelSectionShelves:
+    post:
+      consumes:
+      - application/json
+      description: 删除货架
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.DelSectionShelvesReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.DelSectionShelvesRsp'
+      summary: 删除货架
+      tags:
+      - 4.30 - 货架
+  /DelSupplies:
+    post:
+      consumes:
+      - application/json
+      description: 删除物料
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.DelSuppliesReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.DelSuppliesRsp'
+      summary: 删除物料
+      tags:
+      - 4.30 - 物料
+  /DelSuppliesType:
+    post:
+      consumes:
+      - application/json
+      description: 删除物料分类
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.DelSuppliesTypeReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.DelSuppliesTypeRsp'
+      summary: 删除物料分类
+      tags:
+      - 4.30 - 物料分类
+  /DispatchTask/Cancel:
+    post:
+      consumes:
+      - application/json
+      description: 只能取消人工调度、保养、巡检的任务
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.CancelTaskReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.CancelTaskRsp'
+      summary: 取消任务
+      tags:
+      - 5.30/任务
+  /DispatchTask/List:
+    post:
+      consumes:
+      - application/json
+      description: 调度任务列表
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.DispatchTaskListReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.DispatchTaskListRsp'
+      summary: 调度任务列表
+      tags:
+      - 5.30/任务
+  /DispatchTask/ManualCall:
+    post:
+      consumes:
+      - application/json
+      description: 人工调度
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.ManualCallReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.ManualCallRsp'
+      summary: 人工调度（人工叫料 人工送料）
+      tags:
+      - 5.30/任务
+  /GetAgvList:
+    get:
+      consumes:
+      - application/json
+      description: 查询Agv
+      parameters:
+      - description: 分类编码
+        example: C01
+        in: query
+        maxLength: 32
+        name: Code
+        type: string
+      - description: 分类名称
+        example: 分类名称
+        in: query
+        maxLength: 64
+        name: Name
+        type: string
+      - description: 分页大小
+        example: 20
+        in: query
+        minimum: 1
+        name: Limit
+        required: true
+        type: number
+      - description: 分页起始位置
+        example: 0
+        in: query
+        minimum: 0
+        name: Offset
+        required: true
+        type: number
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetAgvListRsp'
+      summary: 查询Agv
+      tags:
+      - 5.30/Agv
+  /GetAgvOne:
+    get:
+      consumes:
+      - application/json
+      description: 查询Agv
+      parameters:
+      - description: 分类编码
+        example: C01
+        in: query
+        maxLength: 32
+        name: Code
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetOneAgvRsp'
+      summary: 查询Agv
+      tags:
+      - 5.30/Agv
+  /GetAgvTypeList:
+    get:
+      consumes:
+      - application/json
+      description: 查询Agv分类
+      parameters:
+      - description: 分类编码
+        example: C01
+        in: query
+        maxLength: 32
+        name: Code
+        type: string
+      - description: 分类名称
+        example: 分类名称
+        in: query
+        maxLength: 64
+        name: Name
+        type: string
+      - description: 分页大小
+        example: 20
+        in: query
+        minimum: 1
+        name: Limit
+        required: true
+        type: number
+      - description: 分页起始位置
+        example: 0
+        in: query
+        minimum: 0
+        name: Offset
+        required: true
+        type: number
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetAgvTypeListRsp'
+      summary: 查询Agv分类
+      tags:
+      - 5.30/Agv分类
+  /GetAgvTypeOne:
+    get:
+      consumes:
+      - application/json
+      description: 查询Agv分类
+      parameters:
+      - description: 分类编码
+        example: C01
+        in: query
+        maxLength: 32
+        name: Code
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetOneAgvTypeRsp'
+      summary: 查询Agv分类
+      tags:
+      - 5.30/Agv分类
+  /GetAreaList:
+    get:
+      consumes:
+      - application/json
+      description: 查询片区
+      parameters:
+      - description: 编码
+        example: C01
+        in: query
+        maxLength: 32
+        name: Code
+        type: string
+      - description: 名称
+        example: 名称
+        in: query
+        maxLength: 64
+        name: Name
+        type: string
+      - description: 分类编码
+        in: query
+        maxLength: 64
+        name: TypeCode
+        type: string
+      - description: 分页大小
+        example: 20
+        in: query
+        minimum: 1
+        name: Limit
+        required: true
+        type: number
+      - description: 分页起始位置
+        example: 0
+        in: query
+        minimum: 0
+        name: Offset
+        required: true
+        type: number
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetAreaListRsp'
+      summary: 查询片区
+      tags:
+      - 5.30/片区
+  /GetAreaOne:
+    get:
+      consumes:
+      - application/json
+      description: 查询片区
+      parameters:
+      - description: 编码
+        example: C01
+        in: query
+        maxLength: 32
+        name: Code
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetOneAreaRsp'
+      summary: 查询片区
+      tags:
+      - 5.30/片区
+  /GetAreaTypeList:
+    get:
+      consumes:
+      - application/json
+      description: 查询片区分类
+      parameters:
+      - description: 分类编码
+        example: C01
+        in: query
+        maxLength: 32
+        name: Code
+        type: string
+      - description: 分类名称
+        example: 分类名称
+        in: query
+        maxLength: 64
+        name: Name
+        type: string
+      - description: 分页大小
+        example: 20
+        in: query
+        minimum: 1
+        name: Limit
+        required: true
+        type: number
+      - description: 分页起始位置
+        example: 0
+        in: query
+        minimum: 0
+        name: Offset
+        required: true
+        type: number
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetAreaTypeListRsp'
+      summary: 查询片区分类
+      tags:
+      - 5.30/片区分类
+  /GetAreaTypeOne:
+    get:
+      consumes:
+      - application/json
+      description: 查询片区分类
+      parameters:
+      - description: 分类编码
+        example: C01
+        in: query
+        maxLength: 32
+        name: Code
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetOneAreaTypeRsp'
+      summary: 查询片区分类
+      tags:
+      - 5.30/片区分类
+  /GetCouplingMechanismList:
+    get:
+      consumes:
+      - application/json
+      description: 查询耦合机构
+      parameters:
+      - description: 机构编码
+        example: C01
+        in: query
+        maxLength: 32
+        name: Code
+        type: string
+      - description: 机构名称
+        example: 机构名称
+        in: query
+        maxLength: 64
+        name: Name
+        type: string
+      - description: 分页大小
+        example: 20
+        in: query
+        minimum: 1
+        name: Limit
+        required: true
+        type: number
+      - description: 分页起始位置
+        example: 0
+        in: query
+        minimum: 0
+        name: Offset
+        required: true
+        type: number
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetCouplingMechanismListRsp'
+      summary: 查询耦合机构
+      tags:
+      - 4.30 - 耦合机构
+  /GetCouplingMechanismOne:
+    get:
+      consumes:
+      - application/json
+      description: 查询耦合机构
+      parameters:
+      - description: 机构编码
+        example: C01
+        in: query
+        maxLength: 32
+        name: Code
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetOneCouplingMechanismRsp'
+      summary: 查询耦合机构
+      tags:
+      - 4.30 - 耦合机构
+  /GetEquipmentList:
+    get:
+      consumes:
+      - application/json
+      description: 查询设备
+      parameters:
+      - description: 设备编码
+        example: E01
+        in: query
+        maxLength: 32
+        name: Code
+        type: string
+      - description: 设备名称
+        example: 设备名称
+        in: query
+        maxLength: 64
+        name: Name
+        type: string
+      - description: 工序编码
+        example: 工序编码
+        in: query
+        maxLength: 32
+        name: ProcessCode
+        type: string
+      - description: 状态
+        example: 1
+        in: query
+        minimum: 1
+        name: Status
+        type: number
+      - description: 分页大小
+        example: 20
+        in: query
+        minimum: 1
+        name: Limit
+        required: true
+        type: number
+      - description: 分页起始位置
+        example: 0
+        in: query
+        minimum: 0
+        name: Offset
+        required: true
+        type: number
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetEquipmentListRsp'
+      summary: 查询设备
+      tags:
+      - 4.30 - 设备
+  /GetEquipmentOne:
+    get:
+      consumes:
+      - application/json
+      description: 查询设备
+      parameters:
+      - description: 设备编码
+        example: E01
+        in: query
+        maxLength: 32
+        name: Code
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetEquipmentOneRsp'
+      summary: 查询设备
+      tags:
+      - 4.30 - 设备
+  /GetEquipmentOneSite:
+    get:
+      consumes:
+      - application/json
+      description: 查询设备站点
+      parameters:
+      - description: 站点编码
+        in: query
+        maxLength: 32
+        name: Code
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetEquipmentSiteRsp'
+      summary: 查询设备站点
+      tags:
+      - 4.30 - 设备站点
+  /GetEquipmentSiteList:
+    get:
+      consumes:
+      - application/json
+      description: 查询设备站点
+      parameters:
+      - description: 站点编码
+        in: query
+        maxLength: 32
+        name: Code
+        type: string
+      - description: 站点名称
+        in: query
+        maxLength: 64
+        name: Name
+        type: string
+      - description: 类型
+        example: 1
+        in: query
+        minimum: 1
+        name: Type
+        type: number
+      - description: 工序编码
+        in: query
+        maxLength: 32
+        name: ProcessCode
+        type: string
+      - description: 耦合机构编码
+        in: query
+        maxLength: 32
+        name: CouplingCode
+        type: string
+      - description: 分页大小
+        example: 20
+        in: query
+        minimum: 1
+        name: Limit
+        required: true
+        type: number
+      - description: 分页起始位置
+        example: 0
+        in: query
+        minimum: 0
+        name: Offset
+        required: true
+        type: number
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetEquipmentListRsp'
+      summary: 查询设备站点
+      tags:
+      - 4.30 - 设备站点
+  /GetEquipmentTypeList:
+    get:
+      consumes:
+      - application/json
+      description: 查询设备分类
+      parameters:
+      - description: 设备分类编码
+        example: C01
+        in: query
+        maxLength: 32
+        name: Code
+        type: string
+      - description: 设备分类名称
+        example: 设备分类名称
+        in: query
+        maxLength: 64
+        name: Name
+        type: string
+      - description: 父分类编码
+        in: query
+        maxLength: 32
+        name: ParentCode
+        type: string
+      - description: 分页大小
+        example: 20
+        in: query
+        minimum: 1
+        name: Limit
+        required: true
+        type: number
+      - description: 分页起始位置
+        example: 0
+        in: query
+        minimum: 0
+        name: Offset
+        required: true
+        type: number
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetEquipmentTypeListRsp'
+      summary: 查询设备分类
+      tags:
+      - 5.30 - 设备分类
+  /GetEquipmentTypeOne:
+    get:
+      consumes:
+      - application/json
+      description: 查询设备分类
+      parameters:
+      - description: 设备分类编码
+        example: C01
+        in: query
+        maxLength: 32
+        name: Code
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetOneEquipmentTypeRsp'
+      summary: 查询设备分类
+      tags:
+      - 5.30 - 设备分类
+  /GetEquipmentTypeTree:
+    get:
+      consumes:
+      - application/json
+      description: 查询设备分类
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetEquipmentTypeTreeListRsp'
+      summary: 查询设备分类树
+      tags:
+      - 5.30 - 设备分类
+  /GetFlowerBasketList:
+    get:
+      consumes:
+      - application/json
+      description: 查询花篮
+      parameters:
+      - description: 花篮编码
+        example: C01
+        in: query
+        maxLength: 32
+        name: Code
+        type: string
+      - description: 花篮名称
+        example: 花篮名称
+        in: query
+        maxLength: 64
+        name: Name
+        type: string
+      - description: 分类编码
+        in: query
+        maxLength: 32
+        name: TypeCode
+        type: string
+      - description: 分页大小
+        example: 20
+        in: query
+        minimum: 1
+        name: Limit
+        required: true
+        type: number
+      - description: 分页起始位置
+        example: 0
+        in: query
+        minimum: 0
+        name: Offset
+        required: true
+        type: number
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetFlowerBasketListRsp'
+      summary: 查询花篮
+      tags:
+      - 4.30 - 花篮
+  /GetFlowerBasketOne:
+    get:
+      consumes:
+      - application/json
+      description: 查询花篮
+      parameters:
+      - description: 花篮编码
+        example: C01
+        in: query
+        maxLength: 32
+        name: Code
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetOneFlowerBasketRsp'
+      summary: 查询花篮
+      tags:
+      - 4.30 - 花篮
+  /GetFlowerBasketTypeList:
+    get:
+      consumes:
+      - application/json
+      description: 查询花篮分类
+      parameters:
+      - description: 花篮分类编码
+        example: C01
+        in: query
+        maxLength: 32
+        name: Code
+        type: string
+      - description: 花篮分类名称
+        example: 花篮分类名称
+        in: query
+        maxLength: 64
+        name: Name
+        type: string
+      - description: 父分类编码
+        in: query
+        maxLength: 32
+        name: ParentCode
+        type: string
+      - description: 分页大小
+        example: 20
+        in: query
+        minimum: 1
+        name: Limit
+        required: true
+        type: number
+      - description: 分页起始位置
+        example: 0
+        in: query
+        minimum: 0
+        name: Offset
+        required: true
+        type: number
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetFlowerBasketTypeListRsp'
+      summary: 查询花篮分类
+      tags:
+      - 4.30 - 花篮分类
+  /GetFlowerBasketTypeOne:
+    get:
+      consumes:
+      - application/json
+      description: 查询花篮分类
+      parameters:
+      - description: 花篮分类编码
+        example: C01
+        in: query
+        maxLength: 32
+        name: Code
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetOneFlowerBasketTypeRsp'
+      summary: 查询花篮分类
+      tags:
+      - 4.30 - 花篮分类
+  /GetFlowerBasketTypeTree:
+    get:
+      consumes:
+      - application/json
+      description: 查询花篮分类
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetFlowerBasketTypeTreeListRsp'
+      summary: 查询花篮分类树
+      tags:
+      - 4.30 - 花篮分类
+  /GetGoodsShelfTypeList:
+    get:
+      consumes:
+      - application/json
+      description: 查询货架分类
+      parameters:
+      - description: 货架分类编码
+        example: C01
+        in: query
+        maxLength: 32
+        name: Code
+        type: string
+      - description: 货架分类名称
+        example: 货架分类名称
+        in: query
+        maxLength: 64
+        name: Name
+        type: string
+      - description: 父分类编码
+        in: query
+        maxLength: 32
+        name: ParentCode
+        type: string
+      - description: 分页大小
+        example: 20
+        in: query
+        minimum: 1
+        name: Limit
+        required: true
+        type: number
+      - description: 分页起始位置
+        example: 0
+        in: query
+        minimum: 0
+        name: Offset
+        required: true
+        type: number
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetGoodsShelfTypeListRsp'
+      summary: 查询货架分类
+      tags:
+      - 5.30/货架分类
+  /GetGoodsShelfTypeOne:
+    get:
+      consumes:
+      - application/json
+      description: 查询货架分类
+      parameters:
+      - description: 货架分类编码
+        example: C01
+        in: query
+        maxLength: 32
+        name: Code
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetOneGoodsShelfTypeRsp'
+      summary: 查询货架分类
+      tags:
+      - 5.30/货架分类
+  /GetGoodsShelfTypeTree:
+    get:
+      consumes:
+      - application/json
+      description: 查询货架分类
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetGoodsShelfTypeTreeListRsp'
+      summary: 查询货架分类树
+      tags:
+      - 5.30/货架分类
+  /GetProcess:
+    get:
+      consumes:
+      - application/json
+      description: 查询工序
+      parameters:
+      - description: 工序编码
+        in: query
+        maxLength: 32
+        name: Code
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetOneProcessRsp'
+      summary: 查询工序
+      tags:
+      - 4.30 - 工序
+  /GetProcessBuffer:
+    get:
+      consumes:
+      - application/json
+      description: 查询缓存
+      parameters:
+      - description: 缓存编码
+        in: query
+        maxLength: 32
+        name: Code
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetProcessBufferOneRsp'
+      summary: 查询缓存
+      tags:
+      - 4.30 - 缓存
+  /GetProcessBufferList:
+    get:
+      consumes:
+      - application/json
+      description: 查询缓存
+      parameters:
+      - description: 缓存编码
+        in: query
+        maxLength: 32
+        name: Code
+        type: string
+      - description: 缓存名称
+        in: query
+        maxLength: 64
+        name: Name
+        type: string
+      - description: 缓存类别
+        in: query
+        maxLength: 64
+        name: ProcessBufferType
+        type: string
+      - description: 分页大小
+        example: 20
+        in: query
+        minimum: 1
+        name: Limit
+        required: true
+        type: number
+      - description: 分页起始位置
+        example: 0
+        in: query
+        minimum: 0
+        name: Offset
+        required: true
+        type: number
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetProcessBufferListRsp'
+      summary: 查询缓存
+      tags:
+      - 4.30 - 缓存
+  /GetProcessList:
+    get:
+      consumes:
+      - application/json
+      description: 查询工序
+      parameters:
+      - description: 工序编码
+        in: query
+        maxLength: 32
+        name: Code
+        type: string
+      - description: 工序名称
+        in: query
+        maxLength: 64
+        name: Name
+        type: string
+      - description: 工序类型(枚举类型:1.只过滤父工序 2.只过滤子工序 不传值.返回所有)
+        in: query
+        maxLength: 2
+        name: Type
+        type: string
+      - description: 分页大小
+        example: 20
+        in: query
+        minimum: 1
+        name: Limit
+        required: true
+        type: number
+      - description: 分页起始位置
+        example: 0
+        in: query
+        minimum: 0
+        name: Offset
+        required: true
+        type: number
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetProcessListRsp'
+      summary: 查询工序
+      tags:
+      - 4.30 - 工序
+  /GetProductLineDetailList:
+    get:
+      consumes:
+      - application/json
+      description: 查询工艺路线详情
+      parameters:
+      - description: 工艺路线编码
+        in: query
+        maxLength: 32
+        name: ProductLineCode
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetProductLineDetailListRsp'
+      summary: 查询工艺路线详情
+      tags:
+      - 4.30 - 工艺路线详情
+  /GetProductLineList:
+    get:
+      consumes:
+      - application/json
+      description: 查询工艺路线
+      parameters:
+      - description: 工艺路线编码
+        in: query
+        maxLength: 32
+        name: Code
+        type: string
+      - description: 工艺路线名称
+        in: query
+        maxLength: 64
+        name: Name
+        type: string
+      - description: 分页大小
+        example: 20
+        in: query
+        minimum: 1
+        name: Limit
+        required: true
+        type: number
+      - description: 分页起始位置
+        example: 0
+        in: query
+        minimum: 0
+        name: Offset
+        required: true
+        type: number
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetProductLineListRsp'
+      summary: 查询工艺路线
+      tags:
+      - 4.30 - 工艺路线
+  /GetProductLineOne:
+    get:
+      consumes:
+      - application/json
+      description: 查询工艺路线
+      parameters:
+      - description: 工艺路线编码
+        in: query
+        maxLength: 32
+        name: Code
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetProductLineOneRsp'
+      summary: 查询工艺路线
+      tags:
+      - 4.30 - 工艺路线
+  /GetSectionDetailList:
+    get:
+      consumes:
+      - application/json
+      description: 查询工段循环详情
+      parameters:
+      - description: 工段循环编码
+        in: query
+        maxLength: 32
+        name: SectionCode
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetSectionDetailListRsp'
+      summary: 查询工段循环详情
+      tags:
+      - 4.30 - 工段循环详情
+  /GetSectionList:
+    get:
+      consumes:
+      - application/json
+      description: 查询工段循环
+      parameters:
+      - description: 工段循环编码
+        in: query
+        maxLength: 32
+        name: Code
+        type: string
+      - description: 工段循环名称
+        in: query
+        maxLength: 64
+        name: Name
+        type: string
+      - description: 分页大小
+        example: 20
+        in: query
+        minimum: 1
+        name: Limit
+        required: true
+        type: number
+      - description: 分页起始位置
+        example: 0
+        in: query
+        minimum: 0
+        name: Offset
+        required: true
+        type: number
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetSectionListRsp'
+      summary: 查询工段循环List
+      tags:
+      - 4.30 - 工段循环
+  /GetSectionOne:
+    get:
+      consumes:
+      - application/json
+      description: 查询工段循环
+      parameters:
+      - description: 工段循环编码
+        in: query
+        maxLength: 32
+        name: Code
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetSectionOneRsp'
+      summary: 查询工段循环
+      tags:
+      - 4.30 - 工段循环
+  /GetSectionShelves:
+    get:
+      consumes:
+      - application/json
+      description: 查询货架
+      parameters:
+      - description: 货架编码
+        in: query
+        maxLength: 32
+        name: Code
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetSectionShelvesOneRsp'
+      summary: 查询货架
+      tags:
+      - 4.30 - 货架
+  /GetSectionShelvesList:
+    get:
+      consumes:
+      - application/json
+      description: 查询货架
+      parameters:
+      - description: 货架编码
+        in: query
+        maxLength: 32
+        name: Code
+        type: string
+      - description: 货架名称
+        in: query
+        maxLength: 64
+        name: Name
+        type: string
+      - description: 状态
+        example: 1
+        in: query
+        minimum: 1
+        name: Status
+        type: number
+      - description: 分页大小
+        example: 20
+        in: query
+        minimum: 1
+        name: Limit
+        required: true
+        type: number
+      - description: 分页起始位置
+        example: 0
+        in: query
+        minimum: 0
+        name: Offset
+        required: true
+        type: number
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetSectionShelvesListRsp'
+      summary: 查询货架
+      tags:
+      - 4.30 - 货架
+  /GetSuppliesList:
+    get:
+      consumes:
+      - application/json
+      description: 查询物料
+      parameters:
+      - description: 物料编码
+        example: E01
+        in: query
+        maxLength: 32
+        name: Code
+        type: string
+      - description: 物料名称
+        example: 物料名称
+        in: query
+        maxLength: 64
+        name: Name
+        type: string
+      - description: 工序编码
+        example: 工序编码
+        in: query
+        maxLength: 32
+        name: ProcessCode
+        type: string
+      - description: 状态
+        example: 1
+        in: query
+        minimum: 1
+        name: Status
+        type: number
+      - description: 分页大小
+        example: 20
+        in: query
+        minimum: 1
+        name: Limit
+        required: true
+        type: number
+      - description: 分页起始位置
+        example: 0
+        in: query
+        minimum: 0
+        name: Offset
+        required: true
+        type: number
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetSuppliesListRsp'
+      summary: 查询物料
+      tags:
+      - 4.30 - 物料
+  /GetSuppliesOne:
+    get:
+      consumes:
+      - application/json
+      description: 查询物料
+      parameters:
+      - description: 物料编码
+        example: E01
+        in: query
+        maxLength: 32
+        name: Code
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetSuppliesOneRsp'
+      summary: 查询物料
+      tags:
+      - 4.30 - 物料
+  /GetSuppliesTypeList:
+    get:
+      consumes:
+      - application/json
+      description: 查询物料分类
+      parameters:
+      - description: 物料分类编码
+        example: C01
+        in: query
+        maxLength: 32
+        name: Code
+        type: string
+      - description: 物料分类名称
+        example: 物料分类名称
+        in: query
+        maxLength: 64
+        name: Name
+        type: string
+      - description: 父分类编码
+        in: query
+        maxLength: 32
+        name: ParentCode
+        type: string
+      - description: 分页大小
+        example: 20
+        in: query
+        minimum: 1
+        name: Limit
+        required: true
+        type: number
+      - description: 分页起始位置
+        example: 0
+        in: query
+        minimum: 0
+        name: Offset
+        required: true
+        type: number
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetSuppliesTypeListRsp'
+      summary: 查询物料分类
+      tags:
+      - 4.30 - 物料分类
+  /GetSuppliesTypeOne:
+    get:
+      consumes:
+      - application/json
+      description: 查询物料分类
+      parameters:
+      - description: 物料分类编码
+        example: C01
+        in: query
+        maxLength: 32
+        name: Code
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetOneSuppliesTypeRsp'
+      summary: 查询物料分类
+      tags:
+      - 4.30 - 物料分类
+  /GetSuppliesTypeTree:
+    get:
+      consumes:
+      - application/json
+      description: 查询物料分类
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.GetSuppliesTypeTreeListRsp'
+      summary: 查询物料分类树
+      tags:
+      - 4.30 - 物料分类
+  /GoodsShelf/BindEquipmentSite:
+    post:
+      consumes:
+      - application/json
+      description: 货架站点绑定
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.BindEquipmentSiteReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.BindEquipmentSiteRsp'
+      summary: 货架站点绑定
+      tags:
+      - 5.30/货架
+  /GoodsShelf/UnBindEquipmentSite:
+    post:
+      consumes:
+      - application/json
+      description: 货架站点解绑
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.UnBindEquipmentSiteReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.UnBindEquipmentSiteRsp'
+      summary: 货架站点解绑
+      tags:
+      - 5.30/货架
+  /Inspection/End:
+    post:
+      consumes:
+      - application/json
+      description: 巡检完成
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.EndInspectionReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.EndInspectionRsp'
+      summary: 巡检完成
+      tags:
+      - 5.30/巡检
+  /Inspection/List:
+    post:
+      consumes:
+      - application/json
+      description: 巡检记录列表
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.InspectionListReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.InspectionListRsp'
+      summary: 巡检记录列表
+      tags:
+      - 5.30/巡检
+  /Inspection/Start:
+    post:
+      consumes:
+      - application/json
+      description: 开始巡检
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.StartInspectionReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.StartInspectionRsp'
+      summary: 开始巡检
+      tags:
+      - 5.30/巡检
+  /Maintain/Complete:
+    post:
+      consumes:
+      - application/json
+      description: 保养完成
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.MaintainCompleteReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.MaintainCompleteRsp'
+      summary: 保养完成
+      tags:
+      - 5.30/保养
+  /Maintain/Confirm:
+    post:
+      consumes:
+      - application/json
+      description: 保养确认
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.MaintainConfirmReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.MaintainConfirmRsp'
+      summary: 保养确认
+      tags:
+      - 5.30/保养
+  /Maintain/List:
+    post:
+      consumes:
+      - application/json
+      description: 保养记录列表
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.MaintainListReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.MaintainListRsp'
+      summary: 保养记录列表
+      tags:
+      - 5.30/保养
+  /OrderDetail:
+    post:
+      consumes:
+      - application/json
+      description: 北京展示任务查询
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.OrderDetailReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.OrderDetailRsp'
+      summary: 北京展示任务查询
+      tags:
+      - 4.30 - 北京展示任务查询
+  /PublishOrder:
+    post:
+      consumes:
+      - application/json
+      description: 下发北京展示订单
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.PublishOrderReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.PublishOrderRsp'
+      summary: 下发北京展示订单
+      tags:
+      - 4.30 - 下发北京展示订单
+  /UpdateAgv:
+    post:
+      consumes:
+      - application/json
+      description: 修改Agv
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.UpdateAgvReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.UpdateAgvRsp'
+      summary: 修改Agv
+      tags:
+      - 5.30/Agv
+  /UpdateAgvType:
+    post:
+      consumes:
+      - application/json
+      description: 修改Agv分类
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.UpdateAgvTypeReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.UpdateAgvTypeRsp'
+      summary: 修改Agv分类
+      tags:
+      - 5.30/Agv分类
+  /UpdateArea:
+    post:
+      consumes:
+      - application/json
+      description: 修改片区
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.UpdateAreaReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.UpdateAreaRsp'
+      summary: 修改片区
+      tags:
+      - 5.30/片区
+  /UpdateAreaType:
+    post:
+      consumes:
+      - application/json
+      description: 修改片区分类
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.UpdateAreaTypeReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.UpdateAreaTypeRsp'
+      summary: 修改片区分类
+      tags:
+      - 5.30/片区分类
+  /UpdateCouplingMechanism:
+    post:
+      consumes:
+      - application/json
+      description: 修改耦合机构
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.UpdateCouplingMechanismReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.UpdateCouplingMechanismRsp'
+      summary: 修改耦合机构
+      tags:
+      - 4.30 - 耦合机构
+  /UpdateEquipment:
+    post:
+      consumes:
+      - application/json
+      description: 修改设备
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.UpdateEquipmentReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.UpdateEquipmentRsp'
+      summary: 修改设备
+      tags:
+      - 4.30 - 设备
+  /UpdateEquipmentSite:
+    post:
+      consumes:
+      - application/json
+      description: 修改设备站点
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.AddEquipmentSiteReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.AddEquipmentSiteRsp'
+      summary: 修改设备站点
+      tags:
+      - 4.30 - 设备站点
+  /UpdateEquipmentType:
+    post:
+      consumes:
+      - application/json
+      description: 修改设备分类
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.UpdateEquipmentTypeReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.UpdateEquipmentTypeRsp'
+      summary: 修改设备分类
+      tags:
+      - 5.30 - 设备分类
+  /UpdateFlowerBasket:
+    post:
+      consumes:
+      - application/json
+      description: 修改花篮
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.UpdateFlowerBasketReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.UpdateFlowerBasketRsp'
+      summary: 修改花篮
+      tags:
+      - 4.30 - 花篮
+  /UpdateFlowerBasketType:
+    post:
+      consumes:
+      - application/json
+      description: 修改花篮分类
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.UpdateFlowerBasketTypeReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.UpdateFlowerBasketTypeRsp'
+      summary: 修改花篮分类
+      tags:
+      - 4.30 - 花篮分类
+  /UpdateGoodsShelfType:
+    post:
+      consumes:
+      - application/json
+      description: 修改货架分类
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.UpdateGoodsShelfTypeReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.UpdateGoodsShelfTypeRsp'
+      summary: 修改货架分类
+      tags:
+      - 5.30/货架分类
+  /UpdateProcessBuffer:
+    post:
+      consumes:
+      - application/json
+      description: 修改缓存
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.UpdateProcessBufferReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.UpdateProcessBufferRsp'
+      summary: 修改缓存
+      tags:
+      - 4.30 - 缓存
+  /UpdateProductLine:
+    post:
+      consumes:
+      - application/json
+      description: 修改工艺路线
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.UpdateProductLineReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.UpdateProductLineRsp'
+      summary: 修改工艺路线
+      tags:
+      - 4.30 - 工艺路线
+  /UpdateProductLineDetail:
+    post:
+      consumes:
+      - application/json
+      description: 修改工艺路线详情
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.UpdateProductLineDetailReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.UpdateProductLineDetailRsp'
+      summary: 修改工艺路线详情
+      tags:
+      - 4.30 - 工艺路线详情
+  /UpdateSection:
+    post:
+      consumes:
+      - application/json
+      description: 修改工段循环
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.UpdateSectionReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.UpdateSectionRsp'
+      summary: 修改工段循环
+      tags:
+      - 4.30 - 工段循环
+  /UpdateSectionDetail:
+    post:
+      consumes:
+      - application/json
+      description: 修改工段循环详情
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.UpdateSectionDetailReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.UpdateSectionDetailRsp'
+      summary: 修改工段循环详情
+      tags:
+      - 4.30 - 工段循环详情
+  /UpdateSectionShelves:
+    post:
+      consumes:
+      - application/json
+      description: 修改货架
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.UpdateSectionShelvesReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.UpdateSectionShelvesRsp'
+      summary: 修改货架
+      tags:
+      - 4.30 - 货架
+  /UpdateSupplies:
+    post:
+      consumes:
+      - application/json
+      description: 修改物料
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.UpdateSuppliesReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.UpdateSuppliesRsp'
+      summary: 修改物料
+      tags:
+      - 4.30 - 物料
+  /UpdateSuppliesType:
+    post:
+      consumes:
+      - application/json
+      description: 修改物料分类
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.UpdateSuppliesTypeReq'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.UpdateSuppliesTypeRsp'
+      summary: 修改物料分类
+      tags:
+      - 4.30 - 物料分类
+  /addProcess:
+    post:
+      consumes:
+      - application/json
+      description: 新增工序
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.AddProcessReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.AddProcessRsp'
+      summary: 新增工序
+      tags:
+      - 4.30 - 工序
+  /addProductLineDetail:
+    post:
+      consumes:
+      - application/json
+      description: 新增工艺路线详情
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.AddProductLineDetailReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.AddProductLineDetailRsp'
+      summary: 新增工艺路线详情
+      tags:
+      - 4.30 - 工艺路线详情
+  /addSection:
+    post:
+      consumes:
+      - application/json
+      description: 新增工段循环
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.AddSectionReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.AddSectionRsp'
+      summary: 新增工段循环
+      tags:
+      - 4.30 - 工段循环
+  /addSectionDetail:
+    post:
+      consumes:
+      - application/json
+      description: 新增工段循环详情
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.AddSectionDetailReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.AddSectionDetailRsp'
+      summary: 新增工段循环详情
+      tags:
+      - 4.30 - 工段循环详情
+  /addSectionShelves:
+    post:
+      consumes:
+      - application/json
+      description: 新增货架
+      parameters:
+      - description: 请求体
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/bench_web.AddSectionShelvesReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/bench_web.AddSectionShelvesRsp'
+      summary: 新增货架
+      tags:
+      - 4.30 - 货架
+securityDefinitions:
+  OAuth2AccessCode:
+    authorizationUrl: https://{{.Host}}/oauth2/authorize?nonce=all
+    flow: accessCode
+    scopes:
+      admin: ' Grants read and write access to administrative information'
+    tokenUrl: https://{{.Host}}/iamapp/api/v1/DescribeAccessToken
+    type: oauth2
+swagger: "2.0"

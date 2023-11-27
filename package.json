@@ -1,0 +1,25 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "prepare": "husky install",
+    "reinstall_deps": "npm run clean && npm i",
+    "build": "tsc -b packages",
+    "publish": "npm run build && lerna publish --conventional-commits -y",
+    "publish:force": "npm run build && lerna publish --force-publish",
+    "release": "npm run publish:force",
+    "clean": "lerna clean -y",
+    "lint": "eslint --ext .js,.ts ./packages/"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.12.0",
+    "@typescript-eslint/parser": "^6.12.0",
+    "eslint": "^8.54.0",
+    "lerna": "^7.4.2",
+    "ts-node": "^10.9.1"
+  }
+}
