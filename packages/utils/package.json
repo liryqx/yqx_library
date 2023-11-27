@@ -1,0 +1,26 @@
+{
+  "name": "utils",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "yqx <liryqx@163.com>",
+  "homepage": "https://github.com/liryqx/yqx_library#readme",
+  "license": "ISC",
+  "main": "lib/utils.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liryqx/yqx_library.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/utils.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/liryqx/yqx_library/issues"
+  }
+}

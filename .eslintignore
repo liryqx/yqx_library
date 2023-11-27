@@ -1,0 +1,4 @@
+**/dist
+public
+packages/**/lib
+packages/**/__test__
